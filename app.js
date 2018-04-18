@@ -1,10 +1,8 @@
 let express = require('express');
-let app = express();
-let server = require('http').Server(app);
-let io = require('socket.io')(server);
-let port = process.env.PORT || 7070;
+let apip = express();
+let apiControllers = require('controllers/apiControllers');
+let port = process.env.PORT || 3030;
 
-app.use('/', express.static(__dirname + '/public'));
-app.set('view engine', 'ejs');
+apiControllers(app);
 
-server.listen(port);
+api.listen(port);
