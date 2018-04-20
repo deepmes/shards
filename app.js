@@ -1,8 +1,12 @@
 let express = require('express');
-let apip = express();
-let apiControllers = require('controllers/apiControllers');
+let app = express();
+let authController = require('./controllers/authController');
+let apiController = require('./controllers/apiController');
 let port = process.env.PORT || 3030;
 
-apiControllers(app);
+app.use('/', express.static(__dirname + '/public'));
 
-api.listen(port);
+authController(app);
+apiController(app);
+
+app.listen(port);

@@ -13,7 +13,10 @@
   "author": "Kevin Mocorro",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
     "express": "^4.16.3",
+    "jsonwebtoken": "^8.2.1",
     "mysql": "^2.15.0"
   }
 }
