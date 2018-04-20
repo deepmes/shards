@@ -1,8 +1,10 @@
 let mysqlCloud = require('../dbConfig/dbCloud');
+let verifyToken = require('../auth/verifyToken');
 
 module.exports = function(app){
     
-    app.get('/shards/:processName', function(req, res){
+    app.get('/shards/:processName', verifyToken, function(req, res){
+        
         mysqlCloud.poolCloud.getConnection(function(err, connection){
             if(!err){
 
@@ -44,7 +46,7 @@ module.exports = function(app){
                                             OUTS: results[i].OUTS
                                     });
                                 }
-                                
+
                                 if(db_response.length == results.length){
                                     let response = JSON.stringify({
                                         statusOuts:{

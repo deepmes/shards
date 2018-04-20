@@ -1,6 +1,6 @@
 let express = require('express');
 let app = express();
-let authController = require('./controllers/authController');
+let authController = require('./auth/authController');
 let apiController = require('./controllers/apiController');
 let port = process.env.PORT || 3030;
 
