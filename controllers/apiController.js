@@ -1,5 +1,6 @@
 let mysqlCloud = require('../dbConfig/dbCloud');
 let verifyToken = require('../auth/verifyToken');
+let moment = require('moment');
 
 module.exports = function(app){
     
@@ -34,7 +35,7 @@ module.exports = function(app){
                                 let db_response = [];
                                 for(let i=0;i<results.length;i++){
                                     db_response.push({
-                                            extracted_date: results[i].extracted_date,
+                                            extracted_date: moment(results[i].extracted_date).format(),
                                             process_name: results[i].process_name,
                                             tool_name: results[i].tool_name,
                                             P: results[i].P,
