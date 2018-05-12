@@ -1,7 +1,14 @@
 let express = require('express');
 let app = express();
+
+let server = require('http').Server(app);
+let io = require('socket.io')(server,{
+    path: '/socketserver'
+});
+
 let authController = require('./auth/authController');
 let apiController = require('./controllers/apiController');
+let apiSocket = require('./controllers/apiSocket');
 
 let RateLimit = require('express-rate-limit');
 let port = process.env.PORT || 3030;
@@ -18,5 +25,6 @@ app.use('/shards/', apilimiter);
 
 authController(app);
 apiController(app);
+apiSocket(io);
 
-app.listen(port);
+server.listen(port);
